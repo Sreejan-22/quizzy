@@ -1,0 +1,105 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Sports",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Tennis was once known as Racquetball.",
+      "answers": ["False", "True"],
+      "correct_answer_index": 0
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which male player won the gold medal of table tennis singles in 2016 Olympics Games?",
+      "answers": [
+        "Zhang Jike (China)",
+        "Jun Mizutani (Japan)",
+        "Ma Long (China)",
+        "Vladimir Samsonov (Belarus)"
+      ],
+      "correct_answer_index": 2
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In Baseball, how many times does the ball have to be pitched outside of the strike zone before the batter is walked?",
+      "answers": ["1", "2", "3", "4"],
+      "correct_answer_index": 3
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What team won the 2016 MLS Cup?",
+      "answers": [
+        "Colorado Rapids",
+        "Seattle Sounders",
+        "Toronto FC",
+        "Montreal Impact"
+      ],
+      "correct_answer_index": 1
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
+      "answers": ["French Open", "US Open", "Wimbledon", "Australian Open"],
+      "correct_answer_index": 1
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who won the 'Champions League' in 1999?",
+      "answers": [
+        "Manchester United",
+        "Barcelona",
+        "Bayern Munich",
+        "Liverpool"
+      ],
+      "correct_answer_index": 0
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which professional wrestler fell from the rafters to his death during a live Pay-Per-View event in 1999?",
+      "answers": ["Chris Benoit", "Lex Luger", "Al Snow", "Owen Hart"],
+      "correct_answer_index": 3
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What country hosted the 2014 Winter Olympics?",
+      "answers": ["Canada", "Russia", "United States", "Germany"],
+      "correct_answer_index": 1
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which basketball team has attended the most NBA grand finals?",
+      "answers": [
+        "Boston Celtics",
+        "Philadelphia 76ers",
+        "Golden State Warriors",
+        "Los Angeles Lakers"
+      ],
+      "correct_answer_index": 3
+    },
+    {
+      "category": "Sports",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "In Canadian football, scoring a rouge is worth how many points?",
+      "answers": ["1", "2", "3", "4"],
+      "correct_answer_index": 0
+    }
+  ]
+}

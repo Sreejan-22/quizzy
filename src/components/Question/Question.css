@@ -16,7 +16,7 @@
 .option {
   justify-self: stretch;
   align-self: center;
-  padding: 0.5rem 0rem;
+  /* padding: 0.5rem 0rem; */
   background-color: rgb(209, 209, 209);
   border-radius: 5px;
   cursor: pointer;
@@ -29,4 +29,5 @@
 
 .option > p {
   text-align: center;
+  margin: 0.5rem 0rem;
 }
