@@ -2,3 +2,10 @@
   margin: 0;
   padding: 0;
 }
+
+button {
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

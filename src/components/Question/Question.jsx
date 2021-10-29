@@ -4,7 +4,7 @@ const Question = ({ question, number, options, nextQuestion }) => {
   return (
     <>
       <div className="question-header">
-        <div>Correct Answers: 0/{number}</div>
+        <div>Question No. {number}</div>
         <div>00:21</div>
       </div>
       <div>
@@ -31,6 +31,7 @@ const Question = ({ question, number, options, nextQuestion }) => {
           </div>
         ))}
       </div>
+      <button onClick={nextQuestion}>Skip</button>
     </>
   );
 };
