@@ -18,7 +18,7 @@ const Question = ({ question, index, options, nextQuestion, lastIndex }) => {
       <div>{question}</div>
       <div className="options">
         {options.map((item) => (
-          <div className="option" key={item} onClick={nextQuestion}>
+          <div className="option" key={item} onClick={stop}>
             <p>{item}</p>
           </div>
         ))}
