@@ -7,6 +7,7 @@ function Quiz() {
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const allQuestions = useRef();
+  const score = useRef(0);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -23,6 +24,10 @@ function Quiz() {
     }
   };
 
+  const setScore = (newScore) => {
+    score.current = newScore;
+  };
+
   return (
     <div className="quiz-content-wrapper">
       <div className="quiz-content">
@@ -30,7 +35,10 @@ function Quiz() {
           <h3 className="quiz-category">Sports</h3>
         </div>
         {loading ? null : index === allQuestions.current.length ? (
-          <h1>Quiz Finished</h1>
+          <div>
+            <h1>Quiz Finished</h1>
+            <h3>Total Score: {score.current}/100</h3>
+          </div>
         ) : (
           <Question
             question={allQuestions.current[index].question}
@@ -40,6 +48,8 @@ function Quiz() {
             correctAnswerIndex={
               allQuestions.current[index].correct_answer_index
             }
+            currScore={score.current}
+            setScore={setScore}
           />
         )}
       </div>

@@ -10,6 +10,8 @@ const Question = ({
   options,
   nextQuestion,
   correctAnswerIndex,
+  currScore,
+  setScore,
 }) => {
   const { start, stop, seconds } = useTimer(timeLimit, nextQuestion);
   const [showResults, setShowResults] = useState(false);
@@ -47,6 +49,9 @@ const Question = ({
             key={item}
             onClick={() => {
               clickedIndex.current = currIndex;
+              if (currIndex === correctAnswerIndex) {
+                setScore(currScore + 10);
+              }
               setShowResults(true);
               if (seconds > 1) {
                 setTimeout(() => {
