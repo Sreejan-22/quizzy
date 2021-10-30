@@ -1,37 +1,29 @@
+import { useEffect } from "react";
+import useTimer from "../../hooks/useTimer";
 import "./Question.css";
 
-const Question = ({ question, number, options, nextQuestion }) => {
+const Question = ({ question, index, options, nextQuestion, lastIndex }) => {
+  const { start, stop, seconds } = useTimer(5, nextQuestion);
+
+  useEffect(() => {
+    start();
+  }, [index, start]);
+
   return (
     <>
       <div className="question-header">
-        <div>Question No. {number}</div>
-        <div>00:21</div>
+        <div>Question No. {index + 1}</div>
+        <div>00:{seconds < 10 ? "0" + seconds : seconds}</div>
       </div>
-      <div>
-        {/* What was the final score of the Germany vs. Brazil 2014 FIFA World Cup
-        match? */}
-        {question}
-      </div>
+      <div>{question}</div>
       <div className="options">
-        {/* <div className="option">
-          <p>0-1</p>
-        </div>
-        <div className="option">
-          <p>7-1</p>
-        </div>
-        <div className="option">
-          <p>16-0</p>
-        </div>
-        <div className="option">
-          <p>3-4</p>
-        </div> */}
         {options.map((item) => (
           <div className="option" key={item} onClick={nextQuestion}>
             <p>{item}</p>
           </div>
         ))}
       </div>
-      <button onClick={nextQuestion}>Skip</button>
+      <button onClick={stop}>Skip</button>
     </>
   );
 };
