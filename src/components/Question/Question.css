@@ -31,3 +31,23 @@
   text-align: center;
   margin: 0.5rem 0rem;
 }
+
+.correct {
+  background-color: rgb(1, 163, 1);
+  color: white;
+}
+
+.correct:hover {
+  background-color: rgb(1, 163, 1);
+  color: white;
+}
+
+.wrong {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+
+.wrong:hover {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}

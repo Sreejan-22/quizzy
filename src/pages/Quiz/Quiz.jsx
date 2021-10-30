@@ -37,7 +37,9 @@ function Quiz() {
             index={index}
             options={allQuestions.current[index].answers}
             nextQuestion={nextQuestion}
-            lastIndex={allQuestions.current.length - 1}
+            correctAnswerIndex={
+              allQuestions.current[index].correct_answer_index
+            }
           />
         )}
       </div>
