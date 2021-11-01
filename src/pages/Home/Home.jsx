@@ -3,10 +3,8 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       <h1>Quiz App</h1>
-      <br />
-      <br />
       <br />
       <Link to="/quiz">
         <button>Go to Sports Quiz</button>

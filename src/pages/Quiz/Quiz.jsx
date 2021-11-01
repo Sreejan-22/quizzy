@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Question from "../../components/Question/Question";
 import "./Quiz.css";
 import data from "../../data/sports.json";
@@ -37,7 +38,12 @@ function Quiz() {
         {loading ? null : index === allQuestions.current.length ? (
           <div>
             <h1>Quiz Finished</h1>
+            <br />
             <h3>Total Score: {score.current}/100</h3>
+            <br />
+            <Link to="/">
+              <button>Go to Home</button>
+            </Link>
           </div>
         ) : (
           <Question
