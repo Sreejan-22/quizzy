@@ -20,6 +20,9 @@ const Signup = () => {
         email,
         password,
       }),
+      headers: {
+        "Content-type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +49,7 @@ const Signup = () => {
       {loading ? (
         <h3 style={{ textAlign: "center" }}>Loading...</h3>
       ) : (
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <br />
           <input
@@ -75,9 +78,7 @@ const Signup = () => {
           />
           <br />
           <br />
-          <button type="submit" onClick={handleSubmit}>
-            Sign Up
-          </button>
+          <button type="submit">Sign Up</button>
         </form>
       )}
     </div>
