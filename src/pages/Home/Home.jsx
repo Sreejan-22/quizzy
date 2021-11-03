@@ -1,16 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { isAuthenticated } from "../../utils/auth";
 import "./Home.css";
 
 const Home = () => {
+  const history = useHistory();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    if (window.location.pathname === "/") {
+      window.location.reload();
+    } else {
+      history.push("/");
+    }
+  };
+
   return (
     <div className="home">
       <h1>Quiz App</h1>
       <br />
       {isAuthenticated() ? (
-        <Link to="/quiz">
-          <button>Go to Sports Quiz</button>
-        </Link>
+        <>
+          <Link to="/quiz">
+            <button>Go to Sports Quiz</button>
+          </Link>
+          <button className="logout-btn" onClick={logout}>
+            Logout
+          </button>
+        </>
       ) : (
         <div>
           <Link to="/signup">
