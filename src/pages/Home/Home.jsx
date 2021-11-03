@@ -23,6 +23,10 @@ const Home = () => {
           <Link to="/quiz">
             <button>Go to Sports Quiz</button>
           </Link>
+          <br />
+          <Link to="/results">
+            <button>See past results</button>
+          </Link>
           <button className="logout-btn" onClick={logout}>
             Logout
           </button>

@@ -28,7 +28,7 @@ const Signup = () => {
       .then((data) => {
         const user = {
           name: data.user.name,
-          email: data.user.name,
+          email: data.user.email,
           token: data.token,
         };
         localStorage.setItem("user", JSON.stringify(user));
