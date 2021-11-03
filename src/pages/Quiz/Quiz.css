@@ -22,3 +22,18 @@
   width: 100%;
   display: flex;
 }
+
+.quiz-summary-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-summary {
+  width: 50vw;
+  padding: 1rem;
+  border: 2px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}

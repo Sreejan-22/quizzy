@@ -12,14 +12,32 @@ const Question = ({
   correctAnswerIndex,
   currScore,
   setScore,
+  setSummary,
 }) => {
   const { start, stop, seconds } = useTimer(timeLimit, nextQuestion);
   const [showResults, setShowResults] = useState(false);
   const clickedIndex = useRef();
 
   useEffect(() => {
+    clickedIndex.current = null;
     setShowResults(false);
     start();
+
+    return () => {
+      const result = {
+        question: question,
+        answer: options[correctAnswerIndex],
+        userAnswer:
+          clickedIndex.current !== null ? options[clickedIndex.current] : null,
+        attempt:
+          clickedIndex.current === null
+            ? "skipped"
+            : clickedIndex.current === correctAnswerIndex
+            ? "correct"
+            : "wrong",
+      };
+      setSummary(result);
+    };
   }, [index, start]);
 
   function showColor(currIndex, correctAnswerIndex) {
