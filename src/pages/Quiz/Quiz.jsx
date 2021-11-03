@@ -53,6 +53,36 @@ function Quiz() {
     summary.current = temp;
   };
 
+  const saveResults = async (e) => {
+    e.preventDefault();
+
+    try {
+      const resultData = {
+        category: "sports",
+        email: getUser().email,
+        score: score.current,
+      };
+
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/results`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${getUser().token}`,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(resultData),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("Result Saved");
+      } else {
+        alert("Failed to save result");
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Failed to save result");
+    }
+  };
+
   return (
     <>
       <div className="quiz-content-wrapper">
@@ -67,6 +97,9 @@ function Quiz() {
               <h1>Quiz Finished</h1>
               <br />
               <h3>Total Score: {score.current}/100</h3>
+              <br />
+              <button onClick={saveResults}>Save Results</button>
+              <br />
               <br />
               <button onClick={() => setShowSummary(true)}>Show Summary</button>
               <br />
