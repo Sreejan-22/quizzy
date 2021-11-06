@@ -1,4 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 import { isAuthenticated } from "../../utils/auth";
 import "./Home.css";
 
@@ -16,6 +17,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Navbar />
       <h1>Quiz App</h1>
       <br />
       {isAuthenticated() ? (
