@@ -18,7 +18,6 @@ const Home = () => {
   return (
     <div className="home">
       <Navbar logout={logout} />
-      <h1>Quiz App</h1>
       <br />
       {isAuthenticated() ? (
         <>
