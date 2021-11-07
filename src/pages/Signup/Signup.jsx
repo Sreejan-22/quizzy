@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./Signup.css";
 
 const Signup = () => {
@@ -42,44 +42,51 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <br />
-      <br />
+    <div className="signup-container">
       {loading ? (
         <h3 style={{ textAlign: "center" }}>Loading...</h3>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <br />
-          <input
-            type="text"
-            id="name"
-            onChange={(e) => setName(e.target.value)}
-            required
+        <div className="signup-wrapper">
+          <img
+            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+            alt=""
+            className="signup-logo-img"
           />
-          <br />
-          <label htmlFor="email">Email</label>
-          <br />
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <br />
-          <label htmlFor="password">Password</label>
-          <br />
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <br />
-          <br />
-          <button type="submit">Sign Up</button>
-        </form>
+          <h1>Create a new account</h1>
+          <p>
+            Already a member?{" "}
+            <Link to="/login" className="plain-link">
+              Login
+            </Link>
+          </p>
+          <div className="signup-form-container">
+            <form className="signup-form" onSubmit={handleSubmit}>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <br />
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

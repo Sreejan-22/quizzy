@@ -1,7 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import { isAuthenticated } from "../../utils/auth";
 import "./Home.css";
+import { isAuthenticated } from "../../utils/auth";
 
 const Home = () => {
   const history = useHistory();
