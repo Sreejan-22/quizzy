@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notifyError } from "../../utils/notifyToasts";
 import "./Login.css";
 
 const Login = () => {
@@ -34,13 +37,14 @@ const Login = () => {
           setLoading(false);
           history.push("/");
         } else {
-          console.log(data.message);
           setLoading(false);
+          notifyError(data.message);
         }
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
+        notifyError("Something went wrong!");
+        console.log(err);
       });
   };
 
@@ -83,6 +87,7 @@ const Login = () => {
               <button type="submit">Login</button>
             </form>
           </div>
+          <ToastContainer />
         </div>
       )}
     </div>

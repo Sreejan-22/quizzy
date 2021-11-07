@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Signup.css";
+import { notifyError } from "../../utils/notifyToasts";
 
 const Signup = () => {
   const history = useHistory();
@@ -26,18 +29,33 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const user = {
-          name: data.user.name,
-          email: data.user.email,
-          token: data.token,
-        };
-        localStorage.setItem("user", JSON.stringify(user));
-        setLoading(false);
-        history.push("/");
+        if (data.success) {
+          const user = {
+            name: data.user.name,
+            email: data.user.email,
+            token: data.token,
+          };
+          localStorage.setItem("user", JSON.stringify(user));
+          setLoading(false);
+          history.push("/");
+        } else {
+          setLoading(false);
+          if (data.hasOwnProperty("serverError")) {
+            notifyError(data.message);
+          } else {
+            const errors = data.errors;
+            for (let field in errors) {
+              if (errors[field].length) {
+                notifyError(errors[field]);
+              }
+            }
+          }
+        }
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
+        console.log(err);
+        notifyError("Something went wrong!!");
       });
   };
 
@@ -86,6 +104,7 @@ const Signup = () => {
               <button type="submit">Sign Up</button>
             </form>
           </div>
+          <ToastContainer />
         </div>
       )}
     </div>
