@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -45,33 +45,45 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <br />
-      <br />
+    <div className="login-container">
       {loading ? (
         <h3 style={{ textAlign: "center" }}>Loading...</h3>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <br />
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
+        <div className="login-wrapper">
+          <img
+            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+            alt=""
+            className="login-logo-img"
           />
-          <br />
-          <label htmlFor="password">Password</label>
-          <br />
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <br />
-          <button type="submit">Login</button>
-        </form>
+          <h1>Log in to your account</h1>
+          <p>
+            Don't have an account?{" "}
+            <Link to="/signup" className="plain-link">
+              Sign Up
+            </Link>
+          </p>
+          <div className="login-form-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+              <label htmlFor="email">Email</label>
+
+              <input
+                type="text"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <label htmlFor="password">Password</label>
+
+              <input
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br />
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

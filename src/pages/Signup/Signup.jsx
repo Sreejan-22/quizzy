@@ -54,7 +54,7 @@ const Signup = () => {
           />
           <h1>Create a new account</h1>
           <p>
-            Already a member?{" "}
+            Already a user?{" "}
             <Link to="/login" className="plain-link">
               Login
             </Link>
