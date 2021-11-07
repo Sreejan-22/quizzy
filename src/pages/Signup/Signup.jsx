@@ -44,7 +44,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       {loading ? (
-        <h3 style={{ textAlign: "center" }}>Loading...</h3>
+        <h3 style={{ textAlign: "center" }}>Please wait...</h3>
       ) : (
         <div className="signup-wrapper">
           <img
