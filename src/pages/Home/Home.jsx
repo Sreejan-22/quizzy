@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Navbar />
+      <Navbar logout={logout} />
       <h1>Quiz App</h1>
       <br />
       {isAuthenticated() ? (
@@ -29,9 +29,6 @@ const Home = () => {
           <Link to="/results">
             <button>See past results</button>
           </Link>
-          <button className="logout-btn" onClick={logout}>
-            Logout
-          </button>
         </>
       ) : (
         <div>

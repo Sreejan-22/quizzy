@@ -1,5 +1,5 @@
 .navbar {
-  height: 4rem;
+  height: 4.5rem;
   width: 100vw;
   position: fixed;
   top: 0px;
@@ -11,17 +11,21 @@
 .nav-child {
   width: 100%;
   height: 100%;
-  padding: 0rem 1.5rem;
+  /* padding: 0rem 1.5rem; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
+  /* margin: 0rem 1.5rem; */
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  flex-grow: 1;
   cursor: pointer;
+  margin-left: 1.5rem;
 }
+
 .logo-img {
   height: 2rem;
   width: auto;
@@ -31,4 +35,8 @@
 .logo-name {
   font-size: 2rem;
   /* font-weight: 600; */
+}
+
+.logout-btn {
+  margin-right: 1.5rem;
 }

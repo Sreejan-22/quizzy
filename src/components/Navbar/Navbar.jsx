@@ -1,6 +1,6 @@
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ logout }) => {
   return (
     <nav className="navbar">
       <div className="nav-child">
@@ -12,6 +12,9 @@ const Navbar = () => {
           />
           <h1 className="logo-name">Quizzy</h1>
         </div>
+        <button className="logout-btn" onClick={logout}>
+          Logout
+        </button>
       </div>
     </nav>
   );
