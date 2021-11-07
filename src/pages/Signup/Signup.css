@@ -70,15 +70,46 @@
 @media screen and (max-width: 1200px) {
   .signup-wrapper {
     width: 35%;
-    display: flex;
-    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .signup-wrapper {
     width: 40%;
-    display: flex;
-    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .signup-wrapper {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .signup-wrapper {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .signup-wrapper {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .signup-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .signup-wrapper {
+    width: 85%;
+  }
+
+  .signup-wrapper > h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
   }
 }
