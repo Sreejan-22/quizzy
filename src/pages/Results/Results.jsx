@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar/Navbar";
 import { getUser } from "../../utils/auth";
 import "./Results.css";
 
@@ -46,8 +47,9 @@ const Results = () => {
 
   return (
     <div>
+      <Navbar />
       {loading ? (
-        <h3 style={{ textAlign: "center" }}>Loading...</h3>
+        <h3 style={{ textAlign: "center", marginTop: "6rem" }}>Loading...</h3>
       ) : (
         <>
           {results.map((item) => (
