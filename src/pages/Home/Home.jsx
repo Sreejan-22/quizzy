@@ -28,21 +28,21 @@ const Home = () => {
       <br />
       {isAuthenticated() ? (
         <>
-          <h1>Categories</h1>
+          <h1>Try out different quizzes</h1>
           <br />
           <br />
           <div className="category-container">
             &nbsp;&nbsp;
             <Link to="/quiz/sports">
-              <button>Go to Sports Quiz</button>
+              <button>Sports Quiz</button>
             </Link>
             &nbsp;&nbsp;
             <Link to="/quiz/history">
-              <button>Go to History Quiz</button>
+              <button>History Quiz</button>
             </Link>
             &nbsp;&nbsp;
             <Link to="/quiz/politics">
-              <button>Go to Politics Quiz</button>
+              <button>Politics Quiz</button>
             </Link>
             &nbsp;&nbsp;
           </div>
