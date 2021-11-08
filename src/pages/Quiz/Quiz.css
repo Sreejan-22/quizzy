@@ -23,6 +23,12 @@
   display: flex;
 }
 
+.quiz-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .quiz-summary-container {
   width: 100vw;
   display: flex;

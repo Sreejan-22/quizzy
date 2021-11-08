@@ -14,9 +14,9 @@
   font-family: "Inter", sans-serif;
 }
 
-#root {
+/* #root {
   background-color: var(--main-bg-color);
-}
+} */
 
 button {
   font-size: 0.875rem;

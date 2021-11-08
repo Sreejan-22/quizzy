@@ -2,13 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Question from "../../components/Question/Question";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getUser } from "../../utils/auth";
+import { notifyError, notifySuccess } from "../../utils/notifyToasts";
 import "./Quiz.css";
 
 function Quiz() {
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showSummary, setShowSummary] = useState(false);
+  const [showSaveBtn, setShowSaveBtn] = useState(true);
   const allQuestions = useRef();
   const score = useRef(0);
   const summary = useRef([]);
@@ -74,13 +78,14 @@ function Quiz() {
       });
       const data = await res.json();
       if (data.success) {
-        alert("Result Saved");
+        notifySuccess("Result saved");
+        setShowSaveBtn(false);
       } else {
-        alert("Failed to save result");
+        notifyError("Failed to save result");
       }
     } catch (err) {
       console.log(err);
-      alert("Failed to save result");
+      notifyError("Failed to save result");
     }
   };
 
@@ -89,29 +94,37 @@ function Quiz() {
       <Navbar />
       <div className="quiz-content-wrapper">
         <div className="quiz-content">
-          <div className="quiz-category-container">
+          {/* <div className="quiz-category-container">
             <h3 className="quiz-category">Sports</h3>
-          </div>
+          </div> */}
           {loading ? (
             <h3>Loading...</h3>
           ) : index === allQuestions.current.length ? (
-            <div>
-              <h1>Quiz Finished</h1>
+            <>
+              <h1>Quiz completed!</h1>
               <br />
-              <h3>Total Score: {score.current}/100</h3>
+              <h2 className="quiz-category">Cagetory: Sports</h2>
               <br />
-              <button onClick={saveResults}>Save Results</button>
+              <h2>Total Score: {score.current}/100</h2>
               <br />
-              <br />
-              <button onClick={() => setShowSummary((prev) => !prev)}>
-                {showSummary ? "Hide" : "Show"} Summary
-              </button>
-              <br />
-              <br />
-              <Link to="/">
-                <button>Go to Home</button>
-              </Link>
-            </div>
+              <div className="quiz-btn-container">
+                &nbsp;&nbsp;
+                {showSaveBtn ? (
+                  <>
+                    <button onClick={saveResults}>Save Results</button>
+                    &nbsp;&nbsp;&nbsp;
+                  </>
+                ) : null}
+                <button onClick={() => setShowSummary((prev) => !prev)}>
+                  {showSummary ? "Hide" : "Show"} Summary
+                </button>
+                &nbsp;&nbsp;&nbsp;
+                <Link to="/">
+                  <button>Go to Home</button>
+                </Link>
+                &nbsp;&nbsp;
+              </div>
+            </>
           ) : (
             <Question
               question={allQuestions.current[index].question}
@@ -159,6 +172,7 @@ function Quiz() {
           </div>
         </div>
       ) : null}
+      <ToastContainer />
     </>
   );
 }

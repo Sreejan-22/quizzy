@@ -17,20 +17,23 @@ import { isAuthenticated } from "./utils/auth.js";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/signup">
-          {isAuthenticated() ? <Redirect to="/" /> : <Signup />}
-        </Route>
-        <Route path="/login">
-          {isAuthenticated() ? <Redirect to="/" /> : <Login />}
-        </Route>
-        <PrivateRoute path="/quiz" component={Quiz} />
-        <PrivateRoute path="/results" component={Results} />
-        <PrivateRoute exact path="/" component={Home} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </Router>
+    <>
+      <div className="bg"></div>
+      <Router>
+        <Switch>
+          <Route path="/signup">
+            {isAuthenticated() ? <Redirect to="/" /> : <Signup />}
+          </Route>
+          <Route path="/login">
+            {isAuthenticated() ? <Redirect to="/" /> : <Login />}
+          </Route>
+          <PrivateRoute path="/quiz" component={Quiz} />
+          <PrivateRoute path="/results" component={Results} />
+          <PrivateRoute exact path="/" component={Home} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
