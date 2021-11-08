@@ -27,7 +27,7 @@ function App() {
           <Route path="/login">
             {isAuthenticated() ? <Redirect to="/" /> : <Login />}
           </Route>
-          <PrivateRoute path="/quiz" component={Quiz} />
+          <PrivateRoute path="/quiz/:category" component={Quiz} />
           <PrivateRoute path="/results" component={Results} />
           <PrivateRoute exact path="/" component={Home} />
           <Route path="*" component={NotFound} />

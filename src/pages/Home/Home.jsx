@@ -3,6 +3,13 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./Home.css";
 import { isAuthenticated } from "../../utils/auth";
 
+const sportpic =
+  "https://media.istockphoto.com/photos/various-sport-equipments-on-grass-picture-id949190736";
+const historypic =
+  "https://media.istockphoto.com/vectors/open-book-with-history-doodles-and-lettering-vector-id1092170968";
+const politicspic =
+  "imf.org/external/pubs/ft/fandd/2020/06/images/frieden-1600.jpg";
+
 const Home = () => {
   const history = useHistory();
 
@@ -21,9 +28,25 @@ const Home = () => {
       <br />
       {isAuthenticated() ? (
         <>
-          <Link to="/quiz">
-            <button>Go to Sports Quiz</button>
-          </Link>
+          <h1>Categories</h1>
+          <br />
+          <br />
+          <div className="category-container">
+            &nbsp;&nbsp;
+            <Link to="/quiz/sports">
+              <button>Go to Sports Quiz</button>
+            </Link>
+            &nbsp;&nbsp;
+            <Link to="/quiz/history">
+              <button>Go to History Quiz</button>
+            </Link>
+            &nbsp;&nbsp;
+            <Link to="/quiz/politics">
+              <button>Go to Politics Quiz</button>
+            </Link>
+            &nbsp;&nbsp;
+          </div>
+          <br />
           <br />
           <Link to="/results">
             <button>See past results</button>

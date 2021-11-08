@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Question from "../../components/Question/Question";
 import { ToastContainer } from "react-toastify";
@@ -9,6 +9,7 @@ import { notifyError, notifySuccess } from "../../utils/notifyToasts";
 import "./Quiz.css";
 
 function Quiz() {
+  const { category } = useParams();
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showSummary, setShowSummary] = useState(false);
@@ -29,7 +30,7 @@ function Quiz() {
   */
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/quiz/sports`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/quiz/${category}`, {
       headers: {
         Authorization: `Bearer ${getUser().token}`,
         "Content-Type": "application/json",
@@ -103,7 +104,7 @@ function Quiz() {
             <>
               <h1>Quiz completed!</h1>
               <br />
-              <h2 className="quiz-category">Cagetory: Sports</h2>
+              <h2 className="quiz-category">Cagetory: {category}</h2>
               <br />
               <h2>Total Score: {score.current}/100</h2>
               <br />

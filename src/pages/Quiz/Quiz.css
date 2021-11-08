@@ -23,6 +23,10 @@
   display: flex;
 }
 
+.quiz-category {
+  text-transform: capitalize;
+}
+
 .quiz-btn-container {
   display: flex;
   justify-content: center;
