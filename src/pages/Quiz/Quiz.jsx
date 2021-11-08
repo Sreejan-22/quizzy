@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 import Question from "../../components/Question/Question";
 import { getUser } from "../../utils/auth";
 import "./Quiz.css";
@@ -85,6 +86,7 @@ function Quiz() {
 
   return (
     <>
+      <Navbar />
       <div className="quiz-content-wrapper">
         <div className="quiz-content">
           <div className="quiz-category-container">
@@ -101,7 +103,9 @@ function Quiz() {
               <button onClick={saveResults}>Save Results</button>
               <br />
               <br />
-              <button onClick={() => setShowSummary(true)}>Show Summary</button>
+              <button onClick={() => setShowSummary((prev) => !prev)}>
+                {showSummary ? "Hide" : "Show"} Summary
+              </button>
               <br />
               <br />
               <Link to="/">
@@ -129,7 +133,7 @@ function Quiz() {
         <div className="quiz-summary-container">
           <div className="quiz-summary">
             {summary.current.map((item, index) => (
-              <div>
+              <div key={`summary-${index}`}>
                 <p>
                   <b>Question {index + 1}: </b>
                   {item.question}
