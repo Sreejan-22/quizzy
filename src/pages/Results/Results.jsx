@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
@@ -26,10 +26,8 @@ const Results = () => {
           }
         );
         const data = await res.json();
-        console.log(data);
         setResults(data.results);
       } catch (err) {
-        console.log(err);
         notifyError("Failed to fetch past results");
       } finally {
         setLoading(false);
@@ -46,13 +44,28 @@ const Results = () => {
         <h3 style={{ textAlign: "center", marginTop: "6rem" }}>Loading...</h3>
       ) : results.length ? (
         <>
-          {results.map((item) => (
-            <div key={item._id} className="results-container">
-              <p>Category: {item.category}</p>
-              <p>Score: {item.score}/100</p>
-              <p>Date: {getDate(item.createdAt)}</p>
+          <div style={{ marginTop: "6rem" }}></div>
+          <br />
+          <br />
+          <div className="temp-wrapper">
+            <div className="temp-container">
+              <h2 className="temp-child">Category</h2>
+              <h2 className="temp-child">Score</h2>
+              <h2 className="temp-child">Date</h2>
+              {results.map((item) => (
+                <React.Fragment key={item._id}>
+                  <div
+                    className="temp-child"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.category}
+                  </div>
+                  <div className="temp-child">{item.score}/100</div>
+                  <div className="temp-child">{getDate(item.createdAt)}</div>
+                </React.Fragment>
+              ))}
             </div>
-          ))}
+          </div>
         </>
       ) : (
         <div
