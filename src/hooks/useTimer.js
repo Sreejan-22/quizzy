@@ -10,11 +10,15 @@ const useTimer = (timeLimit, nextQuestion) => {
     timerId.current = setInterval(() => {
       setSeconds((prev) => prev - 1);
     }, 1000);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSeconds]);
 
   const stop = useCallback(() => {
     clearInterval(timerId.current);
     nextQuestion();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSeconds]);
 
   useEffect(() => {

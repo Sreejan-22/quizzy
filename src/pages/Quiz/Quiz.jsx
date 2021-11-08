@@ -41,6 +41,8 @@ function Quiz() {
         allQuestions.current = jsonData.questions;
         setLoading(false);
       });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
