@@ -43,6 +43,14 @@ function Quiz() {
       });
   }, []);
 
+  useEffect(() => {
+    if (showSummary) {
+      document.body.classList.add("add-bg-color");
+    } else {
+      document.body.classList.remove("add-bg-color");
+    }
+  }, [showSummary]);
+
   const nextQuestion = () => {
     if (index !== allQuestions.current.length - 1) {
       setIndex((prevIndex) => prevIndex + 1);

@@ -44,3 +44,7 @@ button:hover {
 .plain-link:hover {
   text-decoration: underline;
 }
+
+.add-bg-color {
+  background-color: rgba(249, 250, 251);
+}
