@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useTimer from "../../hooks/useTimer";
 import "./Question.css";
 
-const timeLimit = 150;
+const timeLimit = 20;
 
 const Question = ({
   question,
