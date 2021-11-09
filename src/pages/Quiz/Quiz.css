@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: -6rem; */
+  margin-top: 6rem;
 }
 
 .quiz-content {
@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0rem 2rem;
 }
 
 .quiz-content > * {

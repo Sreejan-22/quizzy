@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useTimer from "../../hooks/useTimer";
 import "./Question.css";
 
-const timeLimit = 20;
+const timeLimit = 150;
 
 const Question = ({
   question,
@@ -54,10 +54,11 @@ const Question = ({
   return (
     <>
       <div className="question-header">
-        <div>Question No. {index + 1}</div>
+        <div className="question-number">Question No. {index + 1}</div>
         <div>00:{seconds < 10 ? "0" + seconds : seconds}</div>
       </div>
-      <div>{question}</div>
+      <div className="question">{question}</div>
+      <br />
       <div className="options">
         {options.map((item, currIndex) => (
           <div
@@ -84,6 +85,7 @@ const Question = ({
           </div>
         ))}
       </div>
+      <br />
       <button onClick={stop}>Skip</button>
     </>
   );

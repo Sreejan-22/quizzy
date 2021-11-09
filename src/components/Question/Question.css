@@ -3,6 +3,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.question {
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .options {
@@ -16,15 +23,21 @@
 .option {
   justify-self: stretch;
   align-self: center;
-  /* padding: 0.5rem 0rem; */
+  width: 100%;
+  height: 100%;
   background-color: rgb(209, 209, 209);
   border-radius: 5px;
+  /* border: 2px solid rgba(79, 70, 229); */
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .option:hover {
   background-color: rgb(102, 102, 102);
   color: white;
+  border: none;
 }
 
 .option > p {
