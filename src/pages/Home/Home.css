@@ -7,8 +7,29 @@
   align-items: center;
 }
 
+.sub-heading {
+  font-size: 3rem;
+}
+
 .category-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.home-btn {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .sub-heading {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .sub-heading {
+    font-size: 1.7rem;
+  }
 }

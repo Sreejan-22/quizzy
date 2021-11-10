@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useTimer from "../../hooks/useTimer";
 import "./Question.css";
 
-const timeLimit = 20;
+const timeLimit = 200;
 
 const Question = ({
   question,
@@ -86,7 +86,9 @@ const Question = ({
         ))}
       </div>
       <br />
-      <button onClick={stop}>Skip</button>
+      <button className="skip-btn" onClick={stop}>
+        Skip
+      </button>
     </>
   );
 };
