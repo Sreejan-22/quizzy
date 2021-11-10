@@ -38,6 +38,8 @@ const Question = ({
       };
       setSummary(result);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, start]);
 
   function showColor(currIndex, correctAnswerIndex) {

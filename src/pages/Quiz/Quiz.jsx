@@ -74,7 +74,7 @@ function Quiz() {
 
     try {
       const resultData = {
-        category: "sports",
+        category,
         email: getUser().email,
         score: score.current,
       };
