@@ -50,46 +50,48 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      {loading ? (
-        <h3 style={{ textAlign: "center" }}>Please wait...</h3>
-      ) : (
-        <div className="login-wrapper">
-          <img
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-            alt=""
-            className="login-logo-img"
-          />
-          <h1>Log in to your account</h1>
-          <p>
-            Don't have an account?{" "}
-            <Link to="/signup" className="plain-link">
-              Sign Up
-            </Link>
-          </p>
-          <div className="login-form-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-              <label htmlFor="email">Email</label>
+      <div className="login-wrapper">
+        <img
+          src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+          alt=""
+          className="login-logo-img"
+        />
+        <h1>Log in to your account</h1>
+        <p>
+          Don't have an account?{" "}
+          <Link to="/signup" className="plain-link">
+            Sign Up
+          </Link>
+        </p>
+        <div className="login-form-container">
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
 
-              <input
-                type="text"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            <input
+              type="text"
+              id="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+            />
 
-              <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password</label>
 
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <br />
-              <button type="submit">Login</button>
-            </form>
-          </div>
-          <ToastContainer />
+            <input
+              type="password"
+              id="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
+            />
+            <br />
+            <button type="submit" className={loading ? "btn-loading" : ""}>
+              {loading ? "Loading..." : "Login"}
+            </button>
+          </form>
         </div>
-      )}
+        <ToastContainer />
+      </div>
     </div>
   );
 };

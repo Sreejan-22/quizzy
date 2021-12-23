@@ -48,3 +48,7 @@ button:hover {
 .add-bg-color {
   background-color: rgba(249, 250, 251);
 }
+
+.btn-loading {
+  background-color: rgba(31, 24, 168, 0.5);
+}

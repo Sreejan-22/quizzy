@@ -8,9 +8,15 @@ import { notifyError } from "../../utils/notifyToasts";
 const Signup = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [signupData, setSignupData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,9 +25,9 @@ const Signup = () => {
     fetch(`${process.env.REACT_APP_BASE_URL}/signup`, {
       method: "POST",
       body: JSON.stringify({
-        name,
-        email,
-        password,
+        name: signupData.name,
+        email: signupData.email,
+        password: signupData.password,
       }),
       headers: {
         "Content-type": "application/json",
@@ -54,59 +60,63 @@ const Signup = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
         notifyError("Something went wrong!!");
       });
   };
 
   return (
     <div className="signup-container">
-      {loading ? (
-        <h3 style={{ textAlign: "center" }}>Please wait...</h3>
-      ) : (
-        <div className="signup-wrapper">
-          <img
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-            alt=""
-            className="signup-logo-img"
-          />
-          <h1>Create a new account</h1>
-          <p>
-            Already a user?{" "}
-            <Link to="/login" className="plain-link">
-              Login
-            </Link>
-          </p>
-          <div className="signup-form-container">
-            <form className="signup-form" onSubmit={handleSubmit}>
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <br />
-              <button type="submit">Sign Up</button>
-            </form>
-          </div>
-          <ToastContainer />
+      <div className="signup-wrapper">
+        <img
+          src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+          alt=""
+          className="signup-logo-img"
+        />
+        <h1>Create a new account</h1>
+        <p>
+          Already a user?{" "}
+          <Link to="/login" className="plain-link">
+            Login
+          </Link>
+        </p>
+        <div className="signup-form-container">
+          <form className="signup-form" onSubmit={handleSubmit}>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={signupData.name}
+              onChange={handleInputChange}
+              required
+              disabled={loading}
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              onChange={handleInputChange}
+              required
+              disabled={loading}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={handleInputChange}
+              required
+              disabled={loading}
+            />
+            <br />
+            <button type="submit" className={loading ? "btn-loading" : ""}>
+              {loading ? "Loading..." : "Sign Up"}
+            </button>
+          </form>
         </div>
-      )}
+        <ToastContainer />
+      </div>
     </div>
   );
 };
