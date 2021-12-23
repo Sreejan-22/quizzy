@@ -167,9 +167,11 @@ function Quiz() {
                   {item.answer}
                 </p>
                 {item.attempt === "correct" ? (
-                  <p>Your answer is correct!</p>
+                  <p style={{ color: "rgb(0, 95, 0)", fontWeight: "bold" }}>
+                    Your answer is correct!
+                  </p>
                 ) : item.attempt === "wrong" ? (
-                  <p>
+                  <p style={{ color: "red" }}>
                     <b>Your answer: </b>
                     {item.userAnswer}
                   </p>
