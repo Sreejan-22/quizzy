@@ -8,19 +8,38 @@ import "./Login.css";
 const Login = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+    isSubmitting: false,
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleInputChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const toggleLoading = (type, value) => {
+    if (type === "guest") {
+      setLoading(value);
+    } else {
+      setLoginData({ ...loginData, isSubmitting: value });
+    }
+  };
+
+  const handleSubmit = (isGuestLogin) => {
+    const type = isGuestLogin ? "guest" : "user";
+    const jsonData = isGuestLogin
+      ? {
+          email: process.env.REACT_APP_TEST_EMAIL,
+          password: process.env.REACT_APP_TEST_PASSWORD,
+        }
+      : { email: loginData.email, password: loginData.password };
+
+    toggleLoading(type, true);
 
     fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
       method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify(jsonData),
       headers: {
         "Content-type": "application/json",
       },
@@ -34,17 +53,16 @@ const Login = () => {
             token: data.token,
           };
           localStorage.setItem("user", JSON.stringify(user));
-          setLoading(false);
+          toggleLoading(type, false);
           history.push("/");
         } else {
-          setLoading(false);
+          toggleLoading(type, false);
           notifyError(data.message);
         }
       })
       .catch((err) => {
-        setLoading(false);
+        toggleLoading(type, false);
         notifyError("Something went wrong!");
-        console.log(err);
       });
   };
 
@@ -64,15 +82,23 @@ const Login = () => {
           </Link>
         </p>
         <div className="login-form-container">
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form
+            className="login-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(false);
+            }}
+          >
             <label htmlFor="email">Email</label>
 
             <input
-              type="text"
+              type="email"
               id="email"
+              name="email"
               required
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={loading}
+              value={loginData.email}
+              onChange={handleInputChange}
+              disabled={loginData.isSubmitting || loading}
             />
 
             <label htmlFor="password">Password</label>
@@ -80,13 +106,30 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              name="password"
               required
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={loading}
+              value={loginData.password}
+              onChange={handleInputChange}
+              disabled={loginData.isSubmitting || loading}
             />
             <br />
-            <button type="submit" className={loading ? "btn-loading" : ""}>
-              {loading ? "Loading..." : "Login"}
+            <button
+              type="submit"
+              disabled={loading}
+              className={loginData.isSubmitting ? "btn-loading" : ""}
+            >
+              {loginData.isSubmitting ? "Loading..." : "Login"}
+            </button>
+            <p style={{ margin: "8px 0px", textAlign: "center" }}>Or</p>
+            <button
+              disabled={loginData.isSubmitting}
+              className={loading ? "btn-loading" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit(true);
+              }}
+            >
+              {loading ? "Loading..." : "Login with test credentials"}
             </button>
           </form>
         </div>
