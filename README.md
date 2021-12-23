@@ -12,5 +12,10 @@ Code for the backend of the application can be found [here](https://github.com/S
 
 ### Tech Stack
 
-**Frontend** - React
+**Frontend** - React, React Router
+
 **Backend** - Express, MongoDB + Mongoose
+
+### Contact
+
+Connect with me on [Twitter](https://twitter.com/sreejan_ch) or [LinkedIn](https://linkedin.com/in/sreejanchaudhury)
