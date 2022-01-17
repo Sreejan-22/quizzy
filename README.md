@@ -1,5 +1,7 @@
 # quizzy
 
+### Check out the demo video [here](https://youtu.be/3BwEaBaPrW8)
+
 **Quizzy** is a quiz application.
 
 ### Features
